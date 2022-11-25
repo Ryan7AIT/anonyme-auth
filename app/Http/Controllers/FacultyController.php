@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Faculty;
 use App\Http\Requests\StoreFacultyRequest;
 use App\Http\Requests\UpdateFacultyRequest;
+use Illuminate\Contracts\View\View;
 
 class FacultyController extends Controller
 {
@@ -15,7 +16,7 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        //
+        return view('faculties');
     }
 
     /**
@@ -45,9 +46,12 @@ class FacultyController extends Controller
      * @param  \App\Models\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function show(Faculty $faculty)
+    public function show($id)
     {
-        //
+        // dd($faculty);/
+
+        return view('faculty');
+
     }
 
     /**

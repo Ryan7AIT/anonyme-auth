@@ -28,7 +28,7 @@
                 <div class="links flex justify-between space-x-4">
                     <p class="text-sm text-gray-700  inline-block px-4"><a href="/">Home</a></p>
                     <p class="text-sm text-gray-700  inline-block px-4">About</p>
-                    <p class="text-sm text-gray-700  inline-block px-4">Join a faculty</p>
+                    <p class="text-sm text-gray-700  inline-block px-4"><a href="/faculties">See all faculties</a></p>
                     <p class="text-sm text-gray-700  inline-block px-4">Report an issue</p>
 
 
@@ -68,18 +68,7 @@
                 </div>
 
             </nav>
-            <main class=" container">
-                {{-- <h2 class="text-blue-500  text-center ">Welcome to our application</h2> --}}
 
-                <div class="presentation  flex h-96 ">
-                    <div class="img  w-3/5 h-full bg-blue-300 py-10 " >img</div>
-                    <div class="desc w-2/5 h-full text-center py-10">
-                        <h2>Safety reporting system</h2>
-                        <p class="text-sm">Our application helps college students speak out for them selfe even if they are shy...</p>
-                    </div>
-                </div>
-
-            </main>
 
 
 
