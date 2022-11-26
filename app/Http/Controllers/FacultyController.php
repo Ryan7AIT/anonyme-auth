@@ -16,7 +16,10 @@ class FacultyController extends Controller
      */
     public function index()
     {
-        return view('faculties');
+        $faculties = Faculty::all();
+        return view('faculties', [
+            'faculties' => $faculties
+        ]);
     }
 
     /**
@@ -50,7 +53,11 @@ class FacultyController extends Controller
     {
         // dd($faculty);/
 
-        return view('faculty');
+        $faculty = Faculty::find($id);
+
+        return view('faculty', [
+            'faculty' => $faculty
+        ]);
 
     }
 
