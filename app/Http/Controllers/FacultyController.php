@@ -3,9 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Faculty;
-use App\Http\Requests\StoreFacultyRequest;
 use App\Http\Requests\UpdateFacultyRequest;
-use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 
 class FacultyController extends Controller
 {
@@ -38,9 +37,19 @@ class FacultyController extends Controller
      * @param  \App\Http\Requests\StoreFacultyRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFacultyRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'fid' => 'required',
+            'mat' => 'required',
+            'fname' => 'required',
+            'lname' => 'required'
+        ]);
+
+
+        dd($validated);
+
+        return redirect('/faculties/' . $validated['id']);
     }
 
     /**
