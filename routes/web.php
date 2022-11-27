@@ -22,6 +22,8 @@ Route::get('/', function () {
 Route::get('/faculties', [FacultyController::class, 'index']);
 Route::get('/faculties/{id}', [FacultyController::class, 'show']);
 Route::post('/faculties/{id}', [FacultyController::class, 'store']);
+Route::patch('/faculties/{id}', [FacultyController::class, 'update']);
+
 
 
 

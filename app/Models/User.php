@@ -41,4 +41,8 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function faculty() {
+        return Faculty::where('chef_dept_email', $this->email);
+    }
 }

@@ -21,11 +21,15 @@ class Faculty extends Model
         if($user) {
 
 
-            if($user->status == 'acepted') {
+            if($user->status == 'approved') {
                 return true;
             } else {
                 return false;
             }
         }
+    }
+
+    public function chef() {
+        return $this->chef_dept_email;
     }
 }

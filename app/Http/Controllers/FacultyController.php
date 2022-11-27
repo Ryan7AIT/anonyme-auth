@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Faculty;
 use App\Http\Requests\UpdateFacultyRequest;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FacultyController extends Controller
 {
@@ -41,15 +43,18 @@ class FacultyController extends Controller
     {
         $validated = $request->validate([
             'fid' => 'required',
-            'mat' => 'required',
-            'fname' => 'required',
-            'lname' => 'required'
+            'mat' => 'required'
         ]);
 
 
-        dd($validated);
 
-        return redirect('/faculties/' . $validated['id']);
+        $user = User::where('fname',Auth::user()->fname)->where('lname', Auth::user()->lname)->first();
+
+        $user->status = 'pending';
+
+        $user->save();
+
+        return redirect('/faculties/' . $validated['fid']);
     }
 
     /**
@@ -63,9 +68,12 @@ class FacultyController extends Controller
         // dd($faculty);/
 
         $faculty = Faculty::find($id);
+        $pending = User::where('faculty_id',$id)->where('status', 'pending')->get();
+
 
         return view('faculty', [
-            'faculty' => $faculty
+            'faculty' => $faculty,
+            'pending' => $pending
         ]);
 
     }
@@ -88,9 +96,19 @@ class FacultyController extends Controller
      * @param  \App\Models\Faculty  $faculty
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFacultyRequest $request, Faculty $faculty)
+    public function update(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'toAcept' => 'required'
+        ]);
+
+        $toAccept = User::find($validated['toAcept']);
+
+        $toAccept->status = 'approved';
+
+        $toAccept->save();
+
+        return redirect('/faculties');
     }
 
     /**
