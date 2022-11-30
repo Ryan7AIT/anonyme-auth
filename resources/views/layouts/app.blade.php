@@ -28,7 +28,10 @@
                 <div class="links flex justify-between space-x-4">
                     <p class="text-sm text-gray-700  inline-block px-4"><a href="/">Home</a></p>
                     <p class="text-sm text-gray-700  inline-block px-4">About</p>
-                    <p class="text-sm text-gray-700  inline-block px-4"><a href="/faculties">See all faculties</a></p>
+                    <p class="text-sm text-gray-700  inline-block px-4"><a href="/societies">See all Societies</a></p>
+                    @if (Auth::user()->society())
+                    <p class="text-sm text-gray-700  inline-block px-4"><a href="/societies/{{Auth::user()->society()->id;}}">My Societies ({{Auth::user()->society()->name;}})</a></p>
+                    @endif
                     <p class="text-sm text-gray-700  inline-block px-4">Report an issue</p>
 
 

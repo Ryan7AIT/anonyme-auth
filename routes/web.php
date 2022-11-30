@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SocietyController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,10 +20,16 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/faculties', [FacultyController::class, 'index']);
-Route::get('/faculties/{id}', [FacultyController::class, 'show']);
-Route::post('/faculties/{id}', [FacultyController::class, 'store']);
-Route::patch('/faculties/{id}', [FacultyController::class, 'update']);
+
+Route::get('/societies', [SocietyController::class, 'index']);
+Route::get('/societies/{id}', [SocietyController::class, 'show']);
+
+
+
+// Route::get('/faculties', [FacultyController::class, 'index']);
+// Route::get('/faculties/{id}', [FacultyController::class, 'show']);
+// Route::post('/faculties/{id}', [FacultyController::class, 'store']);
+// Route::patch('/faculties/{id}', [FacultyController::class, 'update']);
 
 
 

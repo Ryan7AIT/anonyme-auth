@@ -1,12 +1,12 @@
 <x-app-layout>
     <div class="py-12 container m-auto w-4/5">
-        <h2 class="text-center font-medium">{{$faculty->name}} </h2>
+        <h2 class="text-center font-medium">{{$society->name}} </h2>
         <div class="faculty flex justify-between mt-6 space-x-10">
 
             <div class="members bg-white border rounded-lg shadow-2xl  px-4 py-6 w-1/5 space-y-6">
-                @foreach ( $faculty->memebers as $memeber )
+                @foreach ( $society->memebers as $memeber )
 
-                    @if ($faculty->isMember($memeber->id))
+                    @if ($society->isMember($memeber->id))
                     <div class="user flex justify-between hover:bg-gray-100  py-2 cursor-pointer">
                         <img src="https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp" alt="profile pic" class="w-6 h-6 rounded-full mr-4 ">
                         <p class="pl-6">{{$memeber->name}}</p>
@@ -20,19 +20,18 @@
 
             </div>
 
-            <div class="faculty bg-white border rounded-lg shadow-2xl  px-4 py-6 w-2/5">
-                <h4 class="text-center">{{ $faculty->name}}</h4>
-                <p class="leading-8 font-light text-sm">{{ $faculty->description }}</p>
+            <div class="faculty bg-white border rounded-lg shadow-2xl  px-4 py-6 w-4/5">
+                <h4 class="text-center">{{ $society->name}}</h4>
+                <p class="leading-8 font-light text-sm">{{ $society->description }}</p>
             </div>
 
-            @if ($faculty->chef() == Auth::user()->email )
-
-            <div class="ask_to_join bg-white border rounded-lg shadow-2xl  px-4 py-6 w-2/5 space-y-4">
-
-            <h1 class="text-center font-bold ">Student who want to join</h1>
+            @if ($society->chef() == Auth::user()->email )
 
 
-            @foreach ($pending as $p)
+
+
+
+            {{-- @foreach ($pending as $p)
 
 
                 <div class="student border p-4 flex justify-between">
@@ -54,15 +53,14 @@
 
                 </div>
 
-            @endforeach
+            @endforeach --}}
 
 
 
-            </div>
 
             @else
 
-            <div class="ask_to_join bg-white border rounded-lg shadow-2xl  px-4 py-6 w-2/5">
+            {{-- <div class="ask_to_join bg-white border rounded-lg shadow-2xl  px-4 py-6 w-2/5">
 
                 <form action="/faculties/{{$faculty->id}}" method="POST">
                     @csrf
@@ -78,7 +76,7 @@
                     <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center ">Join</button>
                 </form>
 
-            </div>
+            </div> --}}
 
             @endif
 
