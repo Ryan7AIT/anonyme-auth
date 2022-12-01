@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\BankController;
 use App\Http\Controllers\FacultyController;
+use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SocietyController;
 use Illuminate\Support\Facades\Route;
@@ -23,6 +25,17 @@ Route::get('/', function () {
 
 Route::get('/societies', [SocietyController::class, 'index']);
 Route::get('/societies/{id}', [SocietyController::class, 'show']);
+Route::get('/messagrie', [MessageController::class, 'index']);
+Route::get('/messagrie/{id}', [MessageController::class, 'show']);
+
+
+Route::get('/bank/messagrie', [BankController::class, 'index']);
+Route::get('/bank/messagrie/{id}', [BankController::class, 'show']);
+
+Route::post('/bank/messagrie', [BankController::class, 'store']);
+
+
+
 
 
 

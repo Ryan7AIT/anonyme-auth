@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Bank;
 use App\Http\Requests\StoreBankRequest;
 use App\Http\Requests\UpdateBankRequest;
+use App\Models\Bankmessage;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class BankController extends Controller
 {
@@ -15,7 +18,12 @@ class BankController extends Controller
      */
     public function index()
     {
-        //
+        $messages = Bankmessage::all();
+
+
+        return view('bankmessagrie', [
+            'messages' => $messages
+        ]);
     }
 
     /**
@@ -34,9 +42,29 @@ class BankController extends Controller
      * @param  \App\Http\Requests\StoreBankRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreBankRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+
+            'message' => 'required'
+        ]);
+
+        if (Auth::user()->id == 10) {
+            $to = 11;
+        }else {
+            $to = 10;
+
+        }
+
+        Bankmessage::create([
+            'user_id' => Auth::user()->id,
+            'snedto_user_id' => $to,
+            'message' => $validated['message'],
+
+
+        ]);
+
+        return redirect('/bank/messagrie');
     }
 
     /**

@@ -12,10 +12,20 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        @livewireStyles
+
     </head>
     <body class="font-sans antialiased">
         <div class="min-h-screen bg-gray-100">
             {{-- @include('layouts.navigation') --}}
+
+            @if (Auth::user()->isBoss())
+                <div>{{ Auth::user()->bank->name}}</div>
+                <a href="/bank/messagrie">See bank messagries</a>
+            @else
+            <div>NOOO</div>
+            @endif
 
 
 
@@ -32,7 +42,9 @@
                     @if (Auth::user()->society())
                     <p class="text-sm text-gray-700  inline-block px-4"><a href="/societies/{{Auth::user()->society()->id;}}">My Societies ({{Auth::user()->society()->name;}})</a></p>
                     @endif
-                    <p class="text-sm text-gray-700  inline-block px-4">Report an issue</p>
+                    @if (Auth::user()->society())
+                    <p class="text-sm text-gray-700  inline-block px-4"><a href="/messagrie">Messagrie</a></p>
+                    @endif
 
 
 
@@ -96,4 +108,7 @@
             </main>
         </div>
     </body>
+
+    @livewireScripts
+
 </html>
