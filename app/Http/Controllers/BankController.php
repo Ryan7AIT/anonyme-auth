@@ -44,6 +44,8 @@ class BankController extends Controller
      */
     public function store(Request $request)
     {
+
+
         $validated = $request->validate([
 
             'message' => 'required'
@@ -56,10 +58,13 @@ class BankController extends Controller
 
         }
 
+        $b = Bank::find(1);
+
+
         Bankmessage::create([
             'user_id' => Auth::user()->id,
             'snedto_user_id' => $to,
-            'message' => $validated['message'],
+            'message' => $b->Encipher($validated['message'],3),
 
 
         ]);

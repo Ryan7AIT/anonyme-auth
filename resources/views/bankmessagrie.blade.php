@@ -30,13 +30,13 @@
             @if ($msg->user_id !== Auth::user()->id)
                 <li class="flex justify-start">
                     <div class="relative max-w-xl px-4 py-2 text-gray-700 rounded shadow">
-                    <span class="block">{{$msg->message}}</span>
+                    <span class="block">{{ Auth::user()->bank->Decipher($msg->message,3)}}</span>
                     </div>
                 </li>
             @else
             <li class="flex justify-end">
                 <div class="relative max-w-xl px-4 py-2 text-gray-700 bg-gray-100 rounded shadow">
-                    <span class="block">{{$msg->message}}</span>
+                    <span class="block">{{ Auth::user()->bank->Decipher($msg->message,3)}}</span>
                 </div>
               </li>
             @endif

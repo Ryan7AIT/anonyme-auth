@@ -23,6 +23,8 @@ return new class extends Migration
             $table->foreignId('society_id')->nullable();
             // $table->string('status')->default('not_joind');
             $table->timestamp('email_verified_at')->nullable();
+            $table->string('tel');
+            $table->string('birth');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();
