@@ -24,7 +24,7 @@
             </div>
 
 
-            <div class="posts w-4/5 space-y-5">
+            <div class="posts w-3/5 space-y-5">
 
                 <div class="idea-container hover:shadow-card transition duration-150 ease-in bg-white rounded-xl flex cursor-pointer">
                     <div class="hidden md:block border-r border-gray-100 px-5 py-8">
@@ -66,6 +66,10 @@
                     </div>
                 </div>
 
+            </div>
+
+            <div class="report">
+                <a href="/reports/create">Report an issue</a>
             </div>
 
 

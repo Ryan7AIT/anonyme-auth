@@ -43,6 +43,11 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+
+    public function mysociety() {
+        return $this->belongsTo(Society::class, 'society_id');
+    }
+
     public function society() {
         return Society::where('chef_dept_email', $this->email)->first();
     }

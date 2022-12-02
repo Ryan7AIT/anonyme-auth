@@ -23,6 +23,8 @@
             @if (Auth::user()->isBoss())
                 <div>{{ Auth::user()->bank->name}}</div>
                 <a href="/bank/messagrie">See bank messagries</a>
+                <br/>
+                <a href="/bank/reports">See all reports</a>
             @else
             <div>NOOO</div>
             @endif

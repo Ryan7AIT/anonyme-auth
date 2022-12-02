@@ -5,6 +5,7 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\SocietyController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,6 +39,16 @@ Route::post('/bank/messagrie', [BankController::class, 'store']);
 
 
 Route::get('/employee/{id}', [EmployeeController::class, 'show']);
+
+Route::get('/bank/reports', [ReportController::class, 'index']);
+
+Route::get('/reports/create', [ReportController::class, 'create']);
+Route::post('/reports', [ReportController::class, 'store']);
+
+
+
+
+
 
 
 
