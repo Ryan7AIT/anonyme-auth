@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
 {
@@ -45,9 +47,18 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function show(Employee $employee)
+    public function show( $id)
     {
-        //
+
+        if(! Auth::user()->isBoss()) {
+            return abort(403);
+        }
+
+        $employee = User::find($id);
+
+        return view('employee', [
+            'employee' => $employee
+        ]);
     }
 
     /**

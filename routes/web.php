@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BankController;
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\FacultyController;
 use App\Http\Controllers\MessageController;
 use App\Http\Controllers\ProfileController;
@@ -35,6 +36,8 @@ Route::get('/bank/messagrie/{id}', [BankController::class, 'show']);
 Route::post('/bank/messagrie', [BankController::class, 'store']);
 
 
+
+Route::get('/employee/{id}', [EmployeeController::class, 'show']);
 
 
 

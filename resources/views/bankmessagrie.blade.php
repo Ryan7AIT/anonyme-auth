@@ -1,8 +1,8 @@
 <x-app-layout>
-<h2 class="text-center p-4 m-4 text-blue-500">Messnger</h2>
+<h2 class="text-center p-4 m-4 text-blue-500">BAnk messenger</h2>
 
 
-<div class="hidden lg:col-span-2 lg:block">
+<div class="hidden lg:col-span-2 lg:block  ">
     <div class="w-full">
       <div class="relative flex items-center p-3 border-b border-gray-300">
         <img class="object-cover w-10 h-10 rounded-full"
