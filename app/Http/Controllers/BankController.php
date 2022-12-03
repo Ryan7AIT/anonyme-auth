@@ -18,12 +18,21 @@ class BankController extends Controller
      */
     public function index()
     {
-        $messages = Bankmessage::all();
+
+        $banks = Bank::where('user_id' , '!=' , Auth::user()->id)->get();
 
 
-        return view('bankmessagrie', [
-            'messages' => $messages
+        return view('banks', [
+            'banks' => $banks
         ]);
+
+
+        // $messages = Bankmessage::all();
+
+
+        // return view('bankmessagrie', [
+        //     'messages' => $messages
+        // ]);
     }
 
     /**
@@ -69,7 +78,7 @@ class BankController extends Controller
 
         ]);
 
-        return redirect('/bank/messagrie');
+        return redirect('/bank/messagrie/' . 1);
     }
 
     /**
@@ -78,9 +87,14 @@ class BankController extends Controller
      * @param  \App\Models\Bank  $bank
      * @return \Illuminate\Http\Response
      */
-    public function show(Bank $bank)
+    public function show($id)
     {
-        //
+        $messages = Bankmessage::all();
+
+
+        return view('bankmessagrie', [
+            'messages' => $messages
+        ]);
     }
 
     /**

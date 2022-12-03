@@ -25,25 +25,27 @@ Route::get('/', function () {
 });
 
 
-Route::get('/societies', [SocietyController::class, 'index']);
-Route::get('/societies/{id}', [SocietyController::class, 'show']);
-Route::get('/messagrie', [MessageController::class, 'index']);
-Route::get('/messagrie/{id}', [MessageController::class, 'show']);
+Route::get('/societies', [SocietyController::class, 'index'])->middleware('auth');
+Route::get('/societies/{id}', [SocietyController::class, 'show'])->middleware('auth');
+Route::get('/messagrie', [MessageController::class, 'index'])->middleware('auth');
+Route::get('/messagrie/{id}', [MessageController::class, 'show'])->middleware('auth');
 
 
-Route::get('/bank/messagrie', [BankController::class, 'index']);
-Route::get('/bank/messagrie/{id}', [BankController::class, 'show']);
+// Route::get('/bank/messagrie', [BankController::class, 'index'])->middleware('auth');
+Route::get('/bank/messagrie', [BankController::class, 'index'])->middleware('auth');
 
-Route::post('/bank/messagrie', [BankController::class, 'store']);
+Route::get('/bank/messagrie/{id}', [BankController::class, 'show'])->middleware('auth');
+
+Route::post('/bank/messagrie', [BankController::class, 'store'])->middleware('auth');
 
 
 
-Route::get('/employee/{id}', [EmployeeController::class, 'show']);
+Route::get('/employee/{id}', [EmployeeController::class, 'show'])->middleware('auth');
 
-Route::get('/bank/reports', [ReportController::class, 'index']);
+Route::get('/bank/reports', [ReportController::class, 'index'])->middleware('auth');
 
-Route::get('/reports/create', [ReportController::class, 'create']);
-Route::post('/reports', [ReportController::class, 'store']);
+Route::get('/reports/create', [ReportController::class, 'create'])->middleware('auth');
+Route::post('/reports', [ReportController::class, 'store'])->middleware('auth');
 
 
 

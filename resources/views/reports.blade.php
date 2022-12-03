@@ -7,7 +7,7 @@
 
                 @foreach ($reports as $report )
                     <div class="report g-white shadow-xl border rounded-xl px-4 py-6">
-                        <h3 class="font-bold text-center">{{ $report->cintent}} </h3>
+                        <h3 class="font-bold text-center">{{ $report->Decipher($report->cintent,3)}} </h3>
                         <p>From <span class="text-blue-500">{{ $report->society->name}}</span>  </p>
                         <p class="text-sm">{{ $report->created_at->diffForHumans()}}</p>
                     </div>

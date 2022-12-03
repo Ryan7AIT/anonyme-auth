@@ -49,8 +49,11 @@ class ReportController extends Controller
             'message' => 'required'
         ]);
 
+
+        $r = Report::find(1);
+
         Report::create([
-            'cintent' => $validated['message'],
+            'cintent' => $r->Encipher($validated['message'],3),
             'society_id' => Auth::user()->mysociety->id
         ]);
 
