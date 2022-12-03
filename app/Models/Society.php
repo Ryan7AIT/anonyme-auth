@@ -31,4 +31,8 @@ class Society extends Model
         return $this->chef_dept_email;
     }
 
+    public function posts() {
+        return $this->hasMany(Post::class);
+    }
+
 }

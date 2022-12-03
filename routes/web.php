@@ -27,6 +27,10 @@ Route::get('/', function () {
 
 Route::get('/societies', [SocietyController::class, 'index'])->middleware('auth');
 Route::get('/societies/{id}', [SocietyController::class, 'show'])->middleware('auth');
+
+Route::post('/society/{id}', [SocietyController::class, 'store'])->middleware('auth');
+
+
 Route::get('/messagrie', [MessageController::class, 'index'])->middleware('auth');
 Route::get('/messagrie/{id}', [MessageController::class, 'show'])->middleware('auth');
 

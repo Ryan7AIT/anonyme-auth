@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\society;
 use App\Http\Requests\StoresocietyRequest;
 use App\Http\Requests\UpdatesocietyRequest;
+use App\Models\Bank;
+use App\Models\Post;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class SocietyController extends Controller
 {
@@ -38,9 +42,28 @@ class SocietyController extends Controller
      * @param  \App\Http\Requests\StoresocietyRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoresocietyRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'title' => 'required',
+            'content' => 'required'
+        ]);
+
+
+
+
+        $b = Bank::find(1);
+
+
+        Post::create([
+            'society_id' => Auth::user()->mysociety->id,
+            'title' => $b->Encipher($validated['title'],3),
+            'content' => $b->Encipher($validated['content'],3),
+
+
+        ]);
+
+        return redirect('/societies/' .  Auth::user()->mysociety->id);
     }
 
     /**
@@ -53,10 +76,14 @@ class SocietyController extends Controller
     {
         $society = society::find($id);
         $pending = User::where('society_id',$id)->get();
+        $posts = $society->posts;
+
+        // dd($posts);
 
 
         return view('society', [
-            'society' => $society
+            'society' => $society,
+            'posts' => $posts
         ]);
     }
 
