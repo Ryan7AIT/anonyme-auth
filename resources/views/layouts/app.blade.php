@@ -21,12 +21,12 @@
             {{-- @include('layouts.navigation') --}}
 
             @if (Auth::user()->isBoss())
-                <div></div>
+                {{-- <div></div> --}}
 
                 <nav class="flex justify-between bg-white px-6 py-4">
 
                     <div class="logo">
-                        Anonymous Alerts
+                        Bank messagrie
                     </div>
 
                     <div class="links flex justify-between space-x-4">
@@ -101,6 +101,12 @@
 
 
 
+                <footer class="w-full bg-blue-500 absolute bottom-0 py-4 text-white">
+                    <div class="content w-3/4 m-auto flex justify-between">
+                        <p>made by Groupe 8</p>
+                        <p>+213 34 56 78</p>
+                    </div>
+                </footer>
 
 
             @else

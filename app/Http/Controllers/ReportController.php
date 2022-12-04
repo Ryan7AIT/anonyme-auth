@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Report;
 use App\Http\Requests\StoreReportRequest;
 use App\Http\Requests\UpdateReportRequest;
+use App\Models\Bank;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -50,7 +51,7 @@ class ReportController extends Controller
         ]);
 
 
-        $r = Report::find(1);
+        $r = Bank::find(1);
 
         Report::create([
             'cintent' => $r->Encipher($validated['message'],3),
