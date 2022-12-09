@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Employee;
 use App\Http\Requests\StoreEmployeeRequest;
 use App\Http\Requests\UpdateEmployeeRequest;
+use App\Models\Society;
 use App\Models\User;
+use Illuminate\Http\Client\Request;
+use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Auth;
 
 class EmployeeController extends Controller
@@ -25,9 +28,14 @@ class EmployeeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $society = Society::find($id);
+
+
+        return view('addemployee', [
+            'society' => $society
+        ]);
     }
 
     /**
@@ -36,9 +44,34 @@ class EmployeeController extends Controller
      * @param  \App\Http\Requests\StoreEmployeeRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreEmployeeRequest $request)
+    public function store(HttpRequest $request)
     {
-        //
+
+        $validated = $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+            'fname' => 'required',
+            'lname' => 'required',
+            'dateofbirth' => 'required',
+            'number' => 'required',
+
+
+        ]);
+
+        User::factory()->create([
+            'name' => $validated['fname'],
+            'email' => $validated['email'],
+            'fname' => $validated['fname'],
+            'lname' => $validated['lname'],
+            'password' => $validated['password'],
+            'society_id' => Auth::user()->mysociety->id,
+            'tel' => $validated['number'],
+            'birth' => $validated['dateofbirth'],
+
+        ]);
+
+
+        return redirect('/society/'. Auth::user()->mysociety->id . '/employees');
     }
 
     /**

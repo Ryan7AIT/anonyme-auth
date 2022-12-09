@@ -2,7 +2,7 @@
 <h2 class="text-center p-4 m-4 text-blue-500">Messnger</h2>
 
 
-<div class="hidden lg:col-span-2 lg:block">
+{{-- <div class="hidden lg:col-span-2 lg:block">
     <div class="w-full">
       <div class="relative flex items-center p-3 border-b border-gray-300">
         <img class="object-cover w-10 h-10 rounded-full"
@@ -75,6 +75,49 @@
         </button>
       </div>
     </div>
-  </div>
+</div> --}}
+
+
+<div class="container w-3/5 m-auto my-6 ">
+    @if (Auth::user()->society())
+        <p>Chat with bank manager and ohers chefs</p>
+
+        <div class="users grid grid-cols-3 gap-4">
+            @foreach ( $users as $user)
+            @if ($user->isBoss2($user))
+                <a href="/messagrie/{{$user->id}}">
+                    <div class="user bg-white p-4 my-6">
+                        <span class="text-blue-500 font-bold">Bank Boss</span> {{$user->name}}
+                    </div>
+                </a>
+            @endif
+
+            @if ($user->society())
+                <a href="/messagrie/{{$user->id}}">
+                    <div class="user bg-white p-4 my-6">
+                        <span class="text-blue-500 font-bold">Chef de society</span> {{$user->name}}
+                    </div>
+                </a>
+            @endif
+
+
+            {{-- <div class="user bg-white p-4 my-6">
+                {{$user->name}}
+            </div> --}}
+            @endforeach
+        </div>
+
+
+
+    @endif
+
+
+</div>
+
+
+
+
+
+
 
 </x-app-layout>

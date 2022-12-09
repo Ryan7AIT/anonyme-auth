@@ -23,36 +23,47 @@ class DatabaseSeeder extends Seeder
 
 
         Society::factory()->create([
-            'name' => 'faculty informatique',
+            'name' => 'Society 1',
             'chef_dept_email' => 'hamza@gmail.com',
             'description' => 'test description'
         ]);
 
         Society::factory()->create([
-            'name' => 'faculty Mathematique',
+            'name' => 'Society 2',
             'chef_dept_email' => 'hamza1@gmail.com',
             'description' => 'test description'
 
         ]);
 
         Society::factory()->create([
-            'name' => 'faculty Chimie',
+            'name' => 'Society 3',
             'chef_dept_email' => 'hamza2@gmail.com',
             'description' => 'test description'
 
         ]);
 
         Society::factory()->create([
-            'name' => 'faculty Biology',
+            'name' => 'Society 4',
             'chef_dept_email' => 'hamza3@gmail.com',
             'description' => 'test description'
 
+
         ]);
+
 
         \App\Models\User::factory()->create([
             'fname' => 'ryan',
             'lname' => 'ait',
-            'name' => 'chef1',
+            'name' => 'chef de society 1',
+            'email' => 'chef1@gmail.com',
+            'society_id' => 1
+        ]);
+
+
+        \App\Models\User::factory()->create([
+            'fname' => 'ryan',
+            'lname' => 'ait',
+            'name' => 'ryan',
             'email' => 'ryan@gmail.com',
             'society_id' => 1
         ]);
@@ -78,7 +89,15 @@ class DatabaseSeeder extends Seeder
             'lname' => 'moh',
             'name' => 'Amine',
             'email' => 'amine@gmail.com',
-            'society_id' => 1
+            'society_id' => 2
+        ]);
+
+        \App\Models\User::factory()->create([
+            'fname' => 'lilia',
+            'lname' => 'alious',
+            'name' => 'lilia',
+            'email' => 'lilia@gmail.com',
+            'society_id' => 2
         ]);
 
         \App\Models\User::factory()->create([
@@ -89,32 +108,40 @@ class DatabaseSeeder extends Seeder
             'society_id' => 2
         ]);
 
+        \App\Models\User::factory()->create([
+            'fname' => 'oumamima',
+            'lname' => 'zer',
+            'name' => 'oumamima',
+            'email' => 'oumamima@gmail.com',
+            'society_id' => 2
+        ]);
+
 
         \App\Models\User::factory()->create([
             'fname' => 'boss2',
             'lname' => 'boss2',
-            'name' => 'boss2',
-            'email' => 'boss2@gmail.com',
+            'name' => 'chef de el badr',
+            'email' => 'elbadr@gmail.com',
             'id' => 11
         ]);
 
         \App\Models\User::factory()->create([
             'fname' => 'boss1',
             'lname' => 'boss1',
-            'name' => 'boss1',
-            'email' => 'boss1@gmail.com',
+            'name' => 'chef de bna',
+            'email' => 'bna@gmail.com',
             'id' => 10
 
         ]);
 
 
         Bank::factory()->create([
-            'name' => 'bank 1',
+            'name' => 'BNA',
             'user_id' => 10
         ]);
 
         Bank::factory()->create([
-            'name' => 'bank 2',
+            'name' => 'EL Badr',
             'user_id' => 11
         ]);
 

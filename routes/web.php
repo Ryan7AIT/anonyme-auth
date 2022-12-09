@@ -32,6 +32,9 @@ Route::post('/society/{id}', [SocietyController::class, 'store'])->middleware('a
 
 
 Route::get('/messagrie', [MessageController::class, 'index'])->middleware('auth');
+Route::post('/messagrie', [MessageController::class, 'store'])->middleware('auth');
+
+
 Route::get('/messagrie/{id}', [MessageController::class, 'show'])->middleware('auth');
 
 
@@ -45,6 +48,10 @@ Route::post('/bank/messagrie', [BankController::class, 'store'])->middleware('au
 
 
 Route::get('/employee/{id}', [EmployeeController::class, 'show'])->middleware('auth');
+Route::get('/society/{id}/employees', [EmployeeController::class, 'create'])->middleware('auth');
+
+Route::post('/society/{id}/employees', [EmployeeController::class, 'store'])->middleware('auth');
+
 
 Route::get('/bank/reports', [ReportController::class, 'index'])->middleware('auth');
 

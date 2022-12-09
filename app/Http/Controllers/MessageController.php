@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Message;
 use App\Http\Requests\StoreMessageRequest;
 use App\Http\Requests\UpdateMessageRequest;
+use App\Models\Bank;
+use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class MessageController extends Controller
@@ -16,10 +19,12 @@ class MessageController extends Controller
      */
     public function index()
     {
-        $messages = Message::where('snedto_user_id' , Auth::user()->id)->get();
+        // $messages = Message::where('snedto_user_id' , Auth::user()->id)->get();
+
+        $users = User::all();
 
         return view('messagrie', [
-            'messages' => $messages
+            'users' => $users
         ]);
     }
 
@@ -39,9 +44,28 @@ class MessageController extends Controller
      * @param  \App\Http\Requests\StoreMessageRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreMessageRequest $request)
+    public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+
+            'message' => 'required',
+            'to' => 'required'
+        ]);
+
+
+
+        $b = Bank::find(1);
+
+
+        Message::create([
+            'user_id' => Auth::user()->id,
+            'snedto_user_id' => $validated['to'],
+            'message' => $b->Encipher($validated['message'],3),
+
+
+        ]);
+
+        return redirect('/messagrie');
     }
 
     /**
@@ -55,11 +79,12 @@ class MessageController extends Controller
 
 
         $message = Message::find($id);
-        $messages = Message::where('user_id' , $id)->where('snedto_user_id', Auth::user()->id)->get();
+        $messages = Message::where('snedto_user_id' , $id)->where('user_id', Auth::user()->id)->get();
 
+        $with = User::find($id);
 
-        return view('message', [
-            'message' => $message,
+        return view('allmessagrie', [
+            'with' => $with,
             'messages' => $messages
         ]);
     }

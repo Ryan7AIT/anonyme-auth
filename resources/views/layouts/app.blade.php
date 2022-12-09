@@ -94,14 +94,14 @@
                 @endif
 
                 <!-- Page Content -->
-                <main>
-                    {{ Auth::user()->bank->name}}
+                <main class="min-h-screen">
+                    {{-- {{ Auth::user()->bank->name}} --}}
                     {{ $slot }}
                 </main>
 
 
 
-                <footer class="w-full bg-blue-500 absolute bottom-0 py-4 text-white">
+                <footer class="w-full bg-blue-500 py-4 text-white">
                     <div class="content w-3/4 m-auto flex justify-between">
                         <p>made by Groupe 8</p>
                         <p>+213 34 56 78</p>
@@ -119,9 +119,14 @@
                     <div class="links flex justify-between space-x-4">
                         <p class="text-sm text-gray-700  inline-block px-4"><a href="/">Home</a></p>
                         <p class="text-sm text-gray-700  inline-block px-4">About</p>
-                        <p class="text-sm text-gray-700  inline-block px-4"><a href="/societies">See all Societies</a></p>
+                        {{-- <p class="text-sm text-gray-700  inline-block px-4"><a href="/societies">See all Societies</a></p> --}}
                         @if (Auth::user()->society())
                         <p class="text-sm text-gray-700  inline-block px-4"><a href="/societies/{{Auth::user()->society()->id;}}">My Societies ({{Auth::user()->society()->name;}})</a></p>
+                        <p class="text-sm text-gray-700  inline-block px-4"><a href="/society/{{Auth::user()->society()->id;}}/employees">Add an employee</a></p>
+
+                        @else
+                        <p class="text-sm text-gray-700  inline-block px-4"><a href="/societies/{{Auth::user()->mysociety->id;}}">My Society</a></p>
+
                         @endif
                         @if (Auth::user()->society())
                         <p class="text-sm text-gray-700  inline-block px-4"><a href="/messagrie">Messagrie</a></p>

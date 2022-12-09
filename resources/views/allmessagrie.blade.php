@@ -1,5 +1,5 @@
 <x-app-layout>
-<h2 class="text-center p-4 m-4 text-blue-500">BAnk messenger</h2>
+<h2 class="text-center p-4 m-4 text-blue-500">Bank messenger</h2>
 
 
 <div class="hidden lg:col-span-2 lg:block  ">
@@ -10,11 +10,7 @@
         <span class="block ml-2 font-bold text-gray-600">
 
 
-            @if (Auth::user()->id == 10)
-                Bank 2
-            @else
-                 Bank 1
-            @endif
+            {{$with->name}}
 
         </span>
 
@@ -30,13 +26,13 @@
             @if ($msg->user_id !== Auth::user()->id)
                 <li class="flex justify-start">
                     <div class="relative max-w-xl px-4 py-2 text-gray-700 rounded shadow">
-                    <span class="block">{{ Auth::user()->bank->Decipher($msg->message,3)}}</span>
+                    <span class="block">{{ Auth::user()->Decipher($msg->message,3)}}</span>
                     </div>
                 </li>
             @else
             <li class="flex justify-end">
                 <div class="relative max-w-xl px-4 py-2 text-gray-700 bg-gray-100 rounded shadow">
-                    <span class="block">{{ Auth::user()->bank->Decipher($msg->message,3)}}</span>
+                    <span class="block">{{ Auth::user()->Decipher($msg->message,3)}}</span>
                 </div>
               </li>
             @endif
@@ -55,7 +51,7 @@
         </ul>
       </div>
 
-      <form action="/bank/messagrie" method="POST">
+      <form action="/messagrie" method="POST">
         @csrf
 
 
@@ -79,7 +75,7 @@
             class="block w-full py-2 pl-4 mx-3 bg-gray-100 rounded-full outline-none focus:text-gray-700"
             name="message" required />
 
-            <input type="hidden" value="{{}}" name="to">
+            <input type="hidden" value="{{$with->id}}" name="to">
 
             <button type="submit">
             <svg class="w-5 h-5 text-gray-500 origin-center transform rotate-90" xmlns="http://www.w3.org/2000/svg"
