@@ -114,4 +114,16 @@ class User extends Authenticatable
     }
 
 
+    public function anonymatsalaire() {
+        return '<= ' . intval($this->salaire) + 1000;
+    }
+
+
+    public function anonymatzip() {
+        return substr($this->zipcode, 0 ,2) .  '**';
+    }
+
+    public function anonymatregion() {
+        return '*';
+    }
 }

@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('society_id');
             $table->string('zipcode');
             $table->string('salaire');
+            $table->string('region');
 
             $table->timestamps();
         });

@@ -18,7 +18,7 @@ class ReportController extends Controller
      */
     public function index()
     {
-        $reports = Report::all();
+        $reports = Report::orderBy('created_at', 'DESC')->get();
 
 
         return view('reports',[
@@ -55,7 +55,10 @@ class ReportController extends Controller
 
         Report::create([
             'cintent' => $r->Encipher($validated['message'],3),
-            'society_id' => Auth::user()->mysociety->id
+            'society_id' => Auth::user()->mysociety->id,
+            'zipcode' => Auth::user()->anonymatzip(Auth::user()->zipcode),
+            'salaire' =>  Auth::user()->anonymatsalaire(Auth::user()->salaire),
+            'region' => '*',
         ]);
 
         return redirect('/dashboard');

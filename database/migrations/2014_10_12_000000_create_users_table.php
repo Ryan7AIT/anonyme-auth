@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('birth')->default('9 september 1976');
             $table->string('zipcode')->default(1600);
             $table->string('salaire')->default(0);
+            $table->string('region')->default('alger');
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Http\Client\Request;
 use Illuminate\Http\Request as HttpRequest;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class EmployeeController extends Controller
 {
@@ -102,7 +103,7 @@ class EmployeeController extends Controller
      */
     public function edit(Employee $employee)
     {
-        //
+        return view('newpassword');
     }
 
     /**
@@ -112,9 +113,19 @@ class EmployeeController extends Controller
      * @param  \App\Models\Employee  $employee
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateEmployeeRequest $request, Employee $employee)
+    public function update(HttpRequest $request )
     {
-        //
+
+        $validated = $request->validate([
+            'password' => 'required'
+        ]);
+
+        $user = Auth::user();
+
+        $user->password = Hash::make($validated['password']);
+
+        $user->save();
+        return redirect('/');
     }
 
     /**

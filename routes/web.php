@@ -59,6 +59,10 @@ Route::get('/reports/create', [ReportController::class, 'create'])->middleware('
 Route::post('/reports', [ReportController::class, 'store'])->middleware('auth');
 
 
+Route::get('/user/{id}/newpassword', [ EmployeeController::class, 'edit']);
+Route::patch('/user/{id}/newpassword', [ EmployeeController::class, 'update']);
+
+
 
 
 

@@ -182,6 +182,11 @@
 
                 <!-- Page Content -->
                 <main>
+
+                    <p class="text-center text-blue-500 font-medium">
+                        <a href="/user/{{Auth::user()->id}}/newpassword">Change password</a>
+                    </p>
+
                     {{ $slot }}
                 </main>
 
