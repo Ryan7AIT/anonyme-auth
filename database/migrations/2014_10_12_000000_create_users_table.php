@@ -21,10 +21,11 @@ return new class extends Migration
 
             $table->string('email')->unique();
             $table->foreignId('society_id')->nullable();
-            // $table->string('status')->default('not_joind');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('tel')->default('0-123-456');
             $table->string('birth')->default('9 september 1976');
+            $table->string('zipcode')->default(1600);
+            $table->string('salaire')->default(0);
             $table->string('password');
             $table->rememberToken();
             $table->timestamps();

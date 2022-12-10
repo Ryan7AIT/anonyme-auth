@@ -17,6 +17,9 @@ return new class extends Migration
             $table->id();
             $table->string('cintent');
             $table->foreignId('society_id');
+            $table->string('zipcode');
+            $table->string('salaire');
+
             $table->timestamps();
         });
     }

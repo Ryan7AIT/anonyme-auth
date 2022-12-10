@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('chef_dept_email');
             $table->string('description');
+            $table->foreignId('bank_id')->default(1);
             $table->timestamps();
         });
     }

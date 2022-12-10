@@ -35,4 +35,11 @@ class Bank extends Model
     public function Decipher($input, $key){
         return $this->Encipher($input, 26 - $key);
     }
+
+    public function societies()
+    {
+        return $this->hasMany(Society::class);
+    }
+
+
 }

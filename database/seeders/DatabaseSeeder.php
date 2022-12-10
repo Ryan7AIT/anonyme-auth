@@ -77,6 +77,15 @@ class DatabaseSeeder extends Seeder
         ]);
 
         \App\Models\User::factory()->create([
+            'fname' => 'hmza1',
+            'lname' => 'tidjani1',
+            'name' => 'chef2',
+            'email' => 'hamza1@gmail.com',
+            'society_id' => 1
+        ]);
+
+
+        \App\Models\User::factory()->create([
             'fname' => 'aymen',
             'lname' => 'mosa',
             'name' => 'Aymen',

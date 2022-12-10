@@ -20,7 +20,12 @@ class SocietyController extends Controller
      */
     public function index()
     {
-        $societies = society::all();
+
+        if(! Auth::user()->isBoss()) {
+            return abort(403);
+        }
+
+        $societies = Auth::user()->bank->societies;
         return view('societies', [
             'societies' => $societies
         ]);
