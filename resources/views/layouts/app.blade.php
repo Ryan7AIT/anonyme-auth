@@ -64,6 +64,8 @@
 
                                         <a href="/bank/messagrie" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-cog fa-fw"></i>Chat with other banks</a>
 
+                                        <a href="/messagrie" class="p-2 hover:bg-gray-800 text-white text-sm no-underline hover:no-underline block"><i class="fa fa-cog fa-fw"></i>Chat with Your employees</a>
+
 
 
                                         {{-- <div class="border border-gray-800"></div>

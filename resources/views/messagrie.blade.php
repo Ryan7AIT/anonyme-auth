@@ -112,6 +112,38 @@
     @endif
 
 
+
+    @if (Auth::user()->isBoss())
+    <p>Chat with bank manager and ohers chefs</p>
+
+    <div class="users grid grid-cols-3 gap-4">
+        @foreach ( $users as $user)
+        @if ($user->isBoss2($user))
+            <a href="/messagrie/{{$user->id}}">
+                <div class="user bg-white p-4 my-6">
+                    <span class="text-blue-500 font-bold">Bank Boss</span> {{$user->name}}
+                </div>
+            </a>
+        @endif
+
+        @if ($user->society())
+            <a href="/messagrie/{{$user->id}}">
+                <div class="user bg-white p-4 my-6">
+                    <span class="text-blue-500 font-bold">Chef de society</span> {{$user->name}}
+                </div>
+            </a>
+        @endif
+
+
+        {{-- <div class="user bg-white p-4 my-6">
+            {{$user->name}}
+        </div> --}}
+        @endforeach
+    </div>
+
+
+
+@endif
 </div>
 
 

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <h2 class="text-center mt-6">Les information personnel de <span class="font-bold">{{$employee->name}}</span></h2>
+    <h2 class="text-center mt-10 pt-10">Les information personnel de <span class="font-bold">{{$employee->name}}</span></h2>
 
     <div class="container w-3/5 m-auto bg-white p-6 my-4 rounded-lg shadow-lg" >
 

@@ -347,6 +347,13 @@
     </main>
 
 
+
+    @else
+
+    <h2 class="text-center text-blue-500 font-medium">Welocme to our application</h2>
+
+
     @endif
+
 
 </x-app-layout>
