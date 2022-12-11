@@ -84,7 +84,7 @@ class EmployeeController extends Controller
     public function show( $id)
     {
 
-        if(! Auth::user()->isBoss()) {
+        if(! Auth::user()->isBoss() and ! Auth::user()->society()) {
             return abort(403);
         }
 

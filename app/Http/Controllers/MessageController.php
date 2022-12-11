@@ -79,7 +79,7 @@ class MessageController extends Controller
 
 
         $message = Message::find($id);
-        $messages = Message::where('snedto_user_id' , $id)->where('user_id', Auth::user()->id)->get();
+        $messages = Message::where('snedto_user_id' , $id)->where('user_id', Auth::user()->id)->orWhere('user_id', $id)->where('snedto_user_id', Auth::user()->id)->get();
 
         $with = User::find($id);
 
